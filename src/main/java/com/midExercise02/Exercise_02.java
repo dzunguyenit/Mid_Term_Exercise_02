@@ -8,9 +8,12 @@ public class Exercise_02 {
 	}
 
 	public static boolean isPasswordNotStrong(String s) {
+
+		String regex = "[^\\w\\s]";
+
 		for (int i = 0; i < s.length(); i++) {
 			char c = s.charAt(i);
-			if (Character.isDigit(c) || Character.isUpperCase(c) || Character.isSpaceChar(c))
+			if (Character.isDigit(c) || Character.isUpperCase(c) || s.matches(regex))
 				return false;
 		}
 		return true;
@@ -32,7 +35,7 @@ public class Exercise_02 {
 			System.out.println("Mật khẩu yếu");
 		}
 
-		if (!isPasswordNotStrong(password)) {
+		if (isPasswordNotStrong(password)) {
 			System.out.println("Mật khẩu chưa đủ mạnh");
 		}
 
